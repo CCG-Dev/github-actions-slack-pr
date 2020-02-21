@@ -17,7 +17,7 @@ const run = async () => {
 
 		core.debug(`Processing Pull Request #${pullRequest.number} with action type ${action}`)
 
-		if (/(ready_for_review|review_requested)/i.test(action)) {
+		if (/(ready_for_review|open|reopened)/i.test(action)) {
 			const reviewers = pullRequest.requested_reviewers.reduce((acc, i) => {
 				if (acc) {
 					return `${acc}, ${i.login}`;
