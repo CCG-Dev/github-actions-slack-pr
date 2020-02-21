@@ -14,6 +14,8 @@ const run = async () => {
 			return;
 		}
 
+		core.debug(`Processing Pull Request #${pullRequest.number} with action type ${pullRequest.action}`)
+
 		if (/(ready_for_review|review_requested)/i.test(pullRequest.action)) {
 			const reviewers = pullRequest.requested_reviewers.reduce((acc, i) => {
 				if (acc) {
@@ -21,7 +23,7 @@ const run = async () => {
 				}
 				return `${i.login}`;
 			});
-			await webhook.send({
+			const message = {
 				"blocks": [
 					{
 						"type": "section",
@@ -52,7 +54,9 @@ const run = async () => {
 						]
 					}
 				]
-			});
+			};
+			core.debug(JSON.stringify(message, null, 2));
+			await webhook.send(message);
 		}
 	} catch (err) {
 		core.setFailed(err.message ? err.message : 'Error sending Slack notification.');
