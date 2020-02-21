@@ -9,16 +9,15 @@ const webhook = new IncomingWebhook(url);
 const run = async () => {
 	try {
 		const pullRequest = github.context.payload.pull_request;
+		const action = github.context.payload.action;
 
 		if (!pullRequest) {
 			return;
 		}
 
-		core.debug(JSON.stringify(github.context, null, 2));
+		core.debug(`Processing Pull Request #${pullRequest.number} with action type ${action}`)
 
-		core.debug(`Processing Pull Request #${pullRequest.number} with action type ${pullRequest.action}`)
-
-		if (/(ready_for_review|review_requested)/i.test(pullRequest.action)) {
+		if (/(ready_for_review|review_requested)/i.test(action)) {
 			const reviewers = pullRequest.requested_reviewers.reduce((acc, i) => {
 				if (acc) {
 					return `${acc}, ${i.login}`;
