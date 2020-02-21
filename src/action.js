@@ -24,13 +24,14 @@ const run = async () => {
 				}
 				return `${i.login}`;
 			});
+			core.debug(JSON.stringify(reviewers));
 			const message = {
 				"blocks": [
 					{
 						"type": "section",
 						"text": {
 							"type": "mrkdwn",
-							"text": `New Pull Request review requested:\n*<${pullRequest.url}|${pullRequest.number} - ${pullRequest.title}>*`
+							"text": `New Pull Request review requested:\n*<${pullRequest.url}|#${pullRequest.number} - ${pullRequest.title}>*`
 						}
 					},
 					{
@@ -38,7 +39,7 @@ const run = async () => {
 						"fields": [
 							{
 								"type": "mrkdwn",
-								"text": `*Repo:*\n${pullRequest.repo}`
+								"text": `*Repo:*\n${pullRequest.head.repo.full_name}`
 							},
 							{
 								"type": "mrkdwn",
