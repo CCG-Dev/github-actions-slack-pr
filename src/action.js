@@ -14,7 +14,7 @@ const run = async () => {
 			return;
 		}
 
-		core.debug(JSON.stringify(pullRequest, null, 2));
+		core.debug(JSON.stringify(github.context.event, null, 2));
 
 		core.debug(`Processing Pull Request #${pullRequest.number} with action type ${pullRequest.action}`)
 
