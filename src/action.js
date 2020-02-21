@@ -14,6 +14,8 @@ const run = async () => {
 			return;
 		}
 
+		core.debug(JSON.stringify(pullRequest, null, 2));
+
 		core.debug(`Processing Pull Request #${pullRequest.number} with action type ${pullRequest.action}`)
 
 		if (/(ready_for_review|review_requested)/i.test(pullRequest.action)) {
