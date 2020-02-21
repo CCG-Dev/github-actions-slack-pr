@@ -23,8 +23,7 @@ const run = async () => {
 					return `${acc}, ${i.login}`;
 				}
 				return `${i.login}`;
-			});
-			core.debug(JSON.stringify(reviewers));
+			}, '');
 			const message = {
 				"blocks": [
 					{
