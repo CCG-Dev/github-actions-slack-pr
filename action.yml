@@ -1,0 +1,9 @@
+name: Slack Notification
+description: Sends Slack notifications using incoming webhooks for opened PRs
+inputs:
+    webhook-url:
+        description: Url for Slack incoming webhook
+        required: true
+runs:
+    using: node12
+    main: src/action.js

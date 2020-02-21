@@ -1,0 +1,22 @@
+{
+  "name": "github-actions-slack-pr",
+  "version": "1.0.0",
+  "description": "Sends Slack notifications using incoming webhooks",
+  "main": "src/action.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccg-dev/github-actions-slack-pr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ccg-dev/github-actions-slack-pr/issues"
+  },
+  "homepage": "https://github.com/ccg-dev/github-actions-slack-pr#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^2.1.0",
+    "@slack/webhook": "^5.0.2"
+  }
+}

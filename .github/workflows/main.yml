@@ -1,0 +1,14 @@
+name: Example Workflow
+
+on:
+  pull_request:
+    types: [ready_for_review, review_requested]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack
+        with:
+          webhook-url: https://testurl.com
